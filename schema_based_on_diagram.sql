@@ -36,9 +36,18 @@ CREATE TABLE invoice_items(
     treatment_id INT NOT NULL REFERENCES treatments(id),
 );
 
-
 -- join table
 CREATE TABLE treatments_history(
     medical_history_id INT REFERENCES medical_histories(id),
     treatment_id INT REFERENCES treatments(id)
 );
+
+--  Add the FK indexes.
+CREATE INDEX ON invoices (medical_history_id);
+CREATE INDEX ON medical_histories (patient_id);
+CREATE INDEX ON invoice_items (invoice_id);
+CREATE INDEX ON invoice_items (treatment_id);
+
+
+CREATE INDEX ON treatments_history (medical_history_id);
+CREATE INDEX ON treatments_history (treatment_id);
