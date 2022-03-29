@@ -37,3 +37,8 @@ CREATE TABLE invoice_items(
 );
 
 
+-- join table
+CREATE TABLE treatments_history(
+    medical_history_id INT REFERENCES medical_histories(id),
+    treatment_id INT REFERENCES treatments(id)
+);
